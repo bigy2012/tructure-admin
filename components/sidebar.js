@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 export default function Sidebar({ children }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -10,14 +10,18 @@ export default function Sidebar({ children }) {
 
   return (
     <div
-      className={`flex h-screen bg-gray-200  ${isOpen ? "overflow-hidden" : ""}`}
+      className={`flex h-screen bg-gray-200  ${isOpen
+        ? "overflow-hidden"
+        : ""}`}
     >
       {/* Sidebar */}
       <aside
-        className={`w-64 bg-gray-800 text-white ${isOpen ? "block" : "hidden"} `}
+        className={`w-64 bg-gray-800 text-white ${isOpen
+          ? "block"
+          : "hidden"} `}
       >
         <div className="flex items-center justify-between p-4">
-          <span className="text-lg font-semibold">Sidebar</span>
+          <span className="text-lg font-semibold">Tructure</span>
           <button
             className="text-white focus:outline-none"
             onClick={toggleSidebar}
@@ -41,8 +45,8 @@ export default function Sidebar({ children }) {
         <nav className="py-4">
           <ul>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -56,11 +60,11 @@ export default function Sidebar({ children }) {
                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                 </svg>
                 <span class="ms-3">Dashboard</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                href="/inventory"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -72,8 +76,8 @@ export default function Sidebar({ children }) {
                 >
                   <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
                 </svg>
-                <span class="flex-1 ms-3 whitespace-nowrap">Products</span>
-              </a>
+                <span class="flex-1 ms-3 whitespace-nowrap">Inventory</span>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -104,8 +108,8 @@ export default function Sidebar({ children }) {
         </nav>
 
         {/* Page content */}
-        <div>
-          {children}
+        <div className="p-5">
+            {children}
         </div>
       </main>
     </div>
