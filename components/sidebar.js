@@ -10,7 +10,7 @@ export default function Sidebar({ children }) {
 
   return (
     <div
-      className={`flex h-screen bg-gray-200  ${isOpen
+      className={`flex h-full bg-blue-50  ${isOpen
         ? "overflow-hidden"
         : ""}`}
     >
@@ -108,7 +108,7 @@ export default function Sidebar({ children }) {
         </nav>
 
         {/* Page content */}
-        <div className="p-5">
+        <div id="content" className="p-5 ">
             {children}
         </div>
       </main>
