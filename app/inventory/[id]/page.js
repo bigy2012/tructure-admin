@@ -3,6 +3,7 @@
 import { GetInventoryById } from "@/common/baseApi";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
+import { postData } from "./action";
 
 export default function formInventory({ params }) {
   const [datas, setData] = useState([]);
@@ -20,8 +21,6 @@ export default function formInventory({ params }) {
       pushData();
     }
   }, []);
-
-  console.log(datas);
 
   if (params.id == 0 || params.id == "add") {
     title = "Create Inventory";
@@ -43,17 +42,29 @@ export default function formInventory({ params }) {
   async function onSubmit(event) {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
+    const {
+      products_img,
+      item_name,
+      description,
+      price,
+      quantity,
+      category_id
+    } = event.target;
 
-    console.log(formData);
-    console.log(event.target);
+    const data = {
+      products_img: products_img.value,
+      name: item_name.value,
+      description: description.value,
+      price: price.value,
+      category_id: category_id.value,
+      quantity: quantity.value
+    };
 
-    // const response = await fetch("/api/submit", {
-    //   method: "POST",
-    //   body: formData
-    // });
+    const res = postData(data, "POST");
 
-    // const data = await response.json();
+    res.then((res) => console.log(res))
+    
+    // window.location = "/";
   }
 
   return (
@@ -180,6 +191,7 @@ export default function formInventory({ params }) {
                     required
                     rows="5"
                     cols="3"
+                    name="description"
                     id="description"
                     className="p-2 border w-full focus:outline-blue-300"
                     placeholder="รายละเอียดสินค้า..."

@@ -10,8 +10,8 @@ export default function Sidebar({ children }) {
 
   return (
     <div
-      className={`flex h-full bg-blue-50  ${isOpen
-        ? "overflow-hidden"
+      className={`flex min-h-screen max-h-[1000%] bg-blue-50  ${isOpen
+        ? "overflow-auto"
         : ""}`}
     >
       {/* Sidebar */}
